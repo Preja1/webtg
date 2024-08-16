@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regular expression</title>
+    <style>
+        body{
+            background-color: blanchedalmond;
+        }
+        button{
+            background-color: rgb(255, 192, 75);
+        }
+        #tittle {
+          
+            color: blueviolet;
+            text-align: center;
+            
+
+        }
+
+        #searchInput {
+            margin-top: 30px;
+            margin-left: 70%;
+
+        }
+
+        #demo {
+            margin-left: 15%;
+            margin-right: 15%;
+            font-size: 20px;
+            text-align: justify;
+            
+
+        }
+        .gap{
+            height : 20px ;
+        }
+        
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="searchInput" placeholder="Enter text to search">
+    <button onclick="myFunction()">Search</button>
+    <h1 id="tittle">The star</h1>
+    <p id="demo">It was on the first day of the New Year that the announcement
+        was made, almost simultaneously from three observatories, that the motion
+        of the planet Neptune, the outermost of all the planets that wheel about
+        the sun, had become very erratic. Ogilvy had already called attention to
+        a suspected retardation in its velocity in December. Such a piece of news
+        was scarcely calculated to interest a world the greater portion of whose
+        inhabitants were unaware of the existence of the planet Neptune, nor outside
+        the astronomical profession did the subsequent discovery of a faint remote speck
+        of light in the region of the perturbed planet cause any very great excitement.
+        Scientific people, however, found the intelligence remarkable enough, even before
+        it became known that the new body was rapidly growing larger and brighter, that
+        its motion was quite different from the orderly progress of the planets, and that
+        the deflection of Neptune and its satellite was becoming now of an unprecedented kind.<br class="gap"></br>
+
+        Few people without a training in science can realise the huge isolation of the solar system. The sun with its
+        specks of planets, its dust of planetoids, and its impalpable comets, swims in a vacant immensity that almost
+        defeats the imagination. Beyond the orbit of Neptune there is space, vacant so far as human observation has
+        penetrated, without warmth or light or sound, blank emptiness, for twenty million times a million miles. That is
+        the smallest estimate of the distance to be traversed before the very nearest of the stars is attained. And,
+        saving a few comets more unsubstantial than the thinnest flame, no matter had ever to human knowledge crossed
+        this gulf of space, until early in the twentieth century this strange wanderer appeared. A vast mass of matter
+        it was, bulky, heavy, rushing without warning out of the black mystery of the sky into the radiance of the sun.
+        By the second day it was clearly visible to any decent instrument, as a speck with a barely sensible diameter,
+        in the constellation Leo near Regulus. In a little while an opera glass could attain it.</p>
+
+
+    <script>
+        // var str ="the quick brown fox jumps over the lazy dog";
+        // var n = str.search(/brown/i);
+        // document.getElementById("demo").innerHTML = n;
+        function myFunction() {
+            var input = document.getElementById("searchInput").value;
+            var str = document.getElementById("demo").innerHTML;
+            str = str.replace(/<span class="highlight">(.*?)<\/span>/g, "$1");
+            var regex = new RegExp(input, "gi");
+            var myFunction = str.replace(regex, function (match) {
+                return '<span class="highlight">' + match + '</span>';
+            });
+            var txt = str.replace(/quick/i, "slow");
+            document.getElementById("demo").innerHTML = myFunction;
+        }
+        document.getElementById("searchInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                myFunction();
+            }
+        });
+    </script>
+</body>
+
+</html><!-- regular expression is pattern that is used to search a string into text 
+(regx)-->
